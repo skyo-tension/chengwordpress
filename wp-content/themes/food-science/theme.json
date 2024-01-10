@@ -1,0 +1,28 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/theme.json",
+    "version": 2,
+    "settings": {
+        "layout": {
+            "contentSize": "800px",
+            "wideSize": "1200px"
+        },
+        "color": {
+            "palette": [
+                {
+                    "name": "Red",
+                    "slug": "red",
+                    "color": "#e60033"
+                },
+                {
+                    "name": "Blue",
+                    "slug": "blue",
+                    "color": "#004be1"
+                }
+            ]
+        }
+    },
+    "styles": {},
+    "patterns": [],
+    "customTemplates": [],
+    "templateParts": []
+}

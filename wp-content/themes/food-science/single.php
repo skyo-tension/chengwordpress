@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-  <main>
+  <main <?php if(wp_theme_has_theme_json()): ?>class="is-full"<?php endif; ?>>
     <div class="section">
       <div class="section_inner">
         <?php if ( have_posts() ) : ?>
@@ -14,6 +14,9 @@
                 <div class="content">
                   <?php the_content(); ?>
                 </div>
+
+                <?php comments_template(); ?>
+
               </div>
               <footer class="post_footer">
                 <?php
@@ -58,6 +61,35 @@
             </article>
           <?php endwhile; ?>
         <?php endif; ?>
+
+        <?php
+        $args = [
+          'post_type' => 'post', //投稿記事だけを指定
+          'posts_per_page' => 3, //最新記事を3件表示
+          'post__not_in' => [ get_the_ID() ], //現在表示している記事のID
+        ];
+        $latest_query = new WP_Query($args);
+        if ($latest_query->have_posts()) :
+        ?>
+        <section class="latest">
+          <header class="latest_header">
+            <h2 class="heading heading-secondary">新着情報</h2>
+          </header>
+          <div class="latest_body">
+            <div class="cardList">
+            <?php while ( $latest_query->have_posts() ) : $latest_query->the_post(); ?>
+
+              <?php get_template_part('template-parts/loop', 'news'); ?>
+
+            <?php
+            endwhile;
+            wp_reset_postdata();
+            ?>
+            </div>
+          </div>
+        </section>
+        <?php endif; ?>
+
       </div>
     </div>
   </main>
