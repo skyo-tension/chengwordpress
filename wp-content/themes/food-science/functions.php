@@ -159,12 +159,12 @@ function get_custom_field($object, $field_name, $request)
 /**
  * REST APIを停止する
  */
-function stop_rest_api()
-{
-    return new WP_Error(
-        'rest_cannot_access',
-        'REST APIは使用できません',
-        ['status' => rest_authorization_required_code()]
-    );
-}
-add_filter('rest_authentication_errors', 'stop_rest_api');
+// function stop_rest_api()
+// {
+//     return new WP_Error(
+//         'rest_cannot_access',
+//         'REST APIは使用できません',
+//         ['status' => rest_authorization_required_code()]
+//     );
+// }
+// add_filter('rest_authentication_errors', 'stop_rest_api');
